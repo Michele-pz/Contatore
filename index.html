@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatori Conto alla Rovescia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a3d4d 0%, #2b5563 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-container {
+            background: #2d5a5e;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 550px;
+            border: 2px solid #4dd0a3;
+        }
+
+        .title {
+            text-align: center;
+            color: #4dd0a3;
+            font-size: 38px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(77, 208, 163, 0.5);
+        }
+
+        .date-input-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .date-input-section input {
+            padding: 12px 24px;
+            font-size: 19px;
+            border: 3px solid #4dd0a3;
+            border-radius: 8px;
+            background: #1a3d4d;
+            color: #4dd0a3;
+            font-family: 'Courier New', monospace;
+        }
+
+        .scoreboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .digit-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .label {
+            color: #4dd0a3;
+            font-size: 19px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .digits {
+            display: flex;
+            gap: 8px;
+        }
+
+        .digit {
+            width: 96px;
+            height: 128px;
+            background: #1a3d4d;
+            border: 4px solid #4dd0a3;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 77px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0 0 16px rgba(77, 208, 163, 0.7);
+            box-shadow: inset 0 3px 16px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .digit::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #2d5a5e;
+            transform: translateY(-50%);
+        }
+
+        @media (max-width: 1200px) {
+            body {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .digit {
+                width: 64px;
+                height: 88px;
+                font-size: 51px;
+            }
+            
+            .title {
+                font-size: 28px;
+            }
+            
+            .label {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown-container">
+        <div class="title">Gianbattista</div>
+        <div class="date-input-section">
+            <input type="date" id="date1" value="2027-12-31">
+        </div>
+        <div class="scoreboard" id="countdown1">
+            <div class="digit-group">
+                <div class="label">Mesi</div>
+                <div class="digits">
+                    <div class="digit" id="months1-1">0</div>
+                    <div class="digit" id="months1-2">0</div>
+                    <div class="digit" id="months1-3">0</div>
+                </div>
+            </div>
+            <div class="digit-group">
+                <div class="label">Settimane</div>
+                <div class="digits">
+                    <div class="digit" id="weeks1-1">0</div>
+                    <div class="digit" id="weeks1-2">0</div>
+                    <div class="digit" id="weeks1-3">0</div>
+                </div>
+            </div>
+            <div class="digit-group">
+                <div class="label">Giorni</div>
+                <div class="digits">
+                    <div class="digit" id="days1-1">0</div>
+                    <div class="digit" id="days1-2">0</div>
+                    <div class="digit" id="days1-3">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="countdown-container">
+        <div class="title">Emanuele</div>
+        <div class="date-input-section">
+            <input type="date" id="date2" value="2028-01-31">
+        </div>
+        <div class="scoreboard" id="countdown2">
+            <div class="digit-group">
+                <div class="label">Mesi</div>
+                <div class="digits">
+                    <div class="digit" id="months2-1">0</div>
+                    <div class="digit" id="months2-2">0</div>
+                    <div class="digit" id="months2-3">0</div>
+                </div>
+            </div>
+            <div class="digit-group">
+                <div class="label">Settimane</div>
+                <div class="digits">
+                    <div class="digit" id="weeks2-1">0</div>
+                    <div class="digit" id="weeks2-2">0</div>
+                    <div class="digit" id="weeks2-3">0</div>
+                </div>
+            </div>
+            <div class="digit-group">
+                <div class="label">Giorni</div>
+                <div class="digits">
+                    <div class="digit" id="days2-1">0</div>
+                    <div class="digit" id="days2-2">0</div>
+                    <div class="digit" id="days2-3">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateTimeDifference(targetDate) {
+            const now = new Date();
+            const target = new Date(targetDate);
+            
+            if (target < now) {
+                return { days: 0, weeks: 0, months: 0 };
+            }
+
+            // Calcola i giorni totali
+            const diffTime = target - now;
+            const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            // Calcola le settimane totali arrotondando per eccesso
+            const totalWeeks = Math.ceil(totalDays / 7);
+
+            // Calcola i mesi approssimativi (usando 30.44 giorni per mese)
+            const totalMonths = Math.floor(totalDays / 30.44);
+
+            return {
+                days: totalDays,
+                weeks: totalWeeks,
+                months: totalMonths
+            };
+        }
+
+        function updateDisplay(counterId, days, weeks, months) {
+            const daysStr = String(days).padStart(3, '0');
+            const weeksStr = String(weeks).padStart(3, '0');
+            const monthsStr = String(months).padStart(3, '0');
+
+            document.getElementById(`months${counterId}-1`).textContent = monthsStr[0];
+            document.getElementById(`months${counterId}-2`).textContent = monthsStr[1];
+            document.getElementById(`months${counterId}-3`).textContent = monthsStr[2];
+            
+            document.getElementById(`weeks${counterId}-1`).textContent = weeksStr[0];
+            document.getElementById(`weeks${counterId}-2`).textContent = weeksStr[1];
+            document.getElementById(`weeks${counterId}-3`).textContent = weeksStr[2];
+            
+            document.getElementById(`days${counterId}-1`).textContent = daysStr[0];
+            document.getElementById(`days${counterId}-2`).textContent = daysStr[1];
+            document.getElementById(`days${counterId}-3`).textContent = daysStr[2];
+        }
+
+        function loadDate(dateInputId) {
+            const saved = localStorage.getItem(dateInputId);
+            if (saved) {
+                document.getElementById(dateInputId).value = saved;
+            }
+        }
+
+        function saveDate(dateInputId, value) {
+            localStorage.setItem(dateInputId, value);
+        }
+
+        function startCountdown(dateInputId, counterId) {
+            const dateInput = document.getElementById(dateInputId);
+            
+            function update() {
+                const { days, weeks, months } = calculateTimeDifference(dateInput.value);
+                updateDisplay(counterId, days, weeks, months);
+            }
+            
+            update();
+            // Aggiorna ogni ora invece che ogni secondo dato che contiamo in giorni
+            setInterval(update, 60000);
+            
+            dateInput.addEventListener('change', () => {
+                saveDate(dateInputId, dateInput.value);
+                update();
+            });
+        }
+
+        // Carica le date salvate e avvia i contatori
+        loadDate('date1');
+        loadDate('date2');
+        startCountdown('date1', 1);
+        startCountdown('date2', 2);
+    </script>
+</body>
+</html>
